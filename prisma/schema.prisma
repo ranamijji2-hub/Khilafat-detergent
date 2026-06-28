@@ -1,0 +1,110 @@
+// Prisma schema for Khilafat Detergent — Production (Neon PostgreSQL)
+// Integrated with Clerk for user auth
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// User profile synced from Clerk webhooks
+model User {
+  id        String   @id                  // Clerk user ID
+  email     String?
+  firstName String?
+  lastName  String?
+  imageUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
+}
+
+model AdminUser {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Product {
+  id              Int         @id @default(autoincrement())
+  name            String
+  slug            String      @unique
+  description     String
+  category        String      @default("Detergent Powder")
+  size            String
+  price           Float
+  compareAtPrice  Float?
+  sku             String?
+  image           String?
+  gallery         String?     // JSON-encoded array of image URLs
+  inStock         Boolean     @default(true)
+  featured        Boolean     @default(false)
+  sortOrder       Int         @default(0)
+  metaTitle       String?
+  metaDescription String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  orderItems      OrderItem[]
+}
+
+model Banner {
+  id        Int     @id @default(autoincrement())
+  title     String
+  subtitle  String?
+  urduLine1 String?
+  urduLine2 String?
+  image     String
+  ctaText   String?
+  ctaLink   String?
+  active    Boolean @default(true)
+  sortOrder Int     @default(0)
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  orderNumber  String      @unique
+  userId       String?
+  user         User?       @relation(fields: [userId], references: [id])
+  customerName String
+  phone        String
+  email        String?
+  address      String
+  notes        String?
+  subtotal     Float
+  total        Float
+  status       String      @default("pending")
+  items        OrderItem[]
+  createdAt    DateTime    @default(now())
+}
+
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  orderId   Int
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId Int?
+  product   Product? @relation(fields: [productId], references: [id])
+  name      String
+  size      String
+  price     Float
+  qty       Int
+}
+
+model Setting {
+  id   Int    @id @default(1)
+  data String // JSON-encoded site settings blob
+}
+
+model MediaFile {
+  id           Int      @id @default(autoincrement())
+  filename     String
+  url          String
+  cloudinaryId String?
+  width        Int?
+  height       Int?
+  createdAt    DateTime @default(now())
+}

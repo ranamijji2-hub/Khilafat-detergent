@@ -1,0 +1,43 @@
+{
+  "name": "khilafat-detergent",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "node prisma/seed.js",
+    "db:studio": "prisma studio",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.21.0",
+    "@prisma/client": "^5.22.0",
+    "@uploadthing/react": "^7.1.0",
+    "cloudinary": "^2.5.1",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "lucide-react": "^0.469.0",
+    "next": "^15.3.3",
+    "nodemailer": "^6.9.16",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^4.2.0",
+    "sharp": "^0.33.5",
+    "slugify": "^1.6.6",
+    "svix": "^1.45.0",
+    "uploadthing": "^7.4.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^3.4.17"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -52,7 +52,7 @@ export async function POST(req) {
     const order = await prisma.order.create({
       data: {
         orderNumber,
-        userId: userId || null,
+        userId: null,
         customerName: sanitizeText(body.customerName, 120),
         phone: sanitizeText(body.phone, 30),
         email: body.email ? sanitizeText(body.email, 120) : null,

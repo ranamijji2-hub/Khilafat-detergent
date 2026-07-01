@@ -42,9 +42,10 @@ export async function generateMetadata() {
       description: settings.seo.defaultDescription,
       images: [settings.seo.ogImage || '/images/brand/og-image.jpg'],
     },
-    verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
-      ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
-      : undefined,
+    verification: {
+  google: "vP2TpG9tRTbrWoG_hbpkUe_C5EtjhovMVkmfns_SU_g",
+},
+
   };
 }
 

@@ -6,17 +6,17 @@ export const DEFAULT_SETTINGS = {
   tagline: 'Advance Cleaning Power For A Brighter & Cleaner Tomorrow',
   logoUrl: '',
   contact: {
-    address: 'Shah Jamal, Muzaffargarh, Punjab, Pakistan',
-    phone: '+92 300 5344747',
-    whatsapp: '+923005344747',
-    email: 'info@rhasons.com',
-    mapEmbedUrl:
-      'https://www.google.com/maps?q=Shah+Jamal+Muzaffargarh+Pakistan&output=embed',
-  },
+  address: 'Industrial Estate, Near T Chowk, Multan, Punjab, Pakistan',
+  phone: '+92 300 7904647',
+  whatsapp: '+923007904647',
+  email: 'info@rhasons.com',
+  mapEmbedUrl:
+    'https://www.google.com/maps?q=Industrial+Estate+Near+T+Chowk+Multan&output=embed',
+},
   social: {
     facebook: 'https://facebook.com/',
     instagram: 'https://instagram.com/',
-    youtube: 'https://youtube.com/',
+    // youtube: 'https://youtube.com/',
   },
   theme: {
     primary: '#0b3a8a',
@@ -37,13 +37,35 @@ export const DEFAULT_SETTINGS = {
     ogImage: '',
   },
   about: {
-    heading: 'About Khilafat Detergent',
-    body:
-      'Khilafat Detergent is a trusted name in the world of cleaning. Manufactured by RH & Sons, we are committed to providing high-quality detergent products that remove tough stains and give your clothes a long-lasting freshness, while staying gentle on fabric and safe for every member of the family.',
-    mission:
-      'To deliver premium-quality, affordable cleaning products to every household in Pakistan through advanced formulas and honest pricing.',
-    foundedYear: '2018',
-  },
+  heading: 'About Khilafat Detergent',
+  body:
+    'Khilafat Detergent is a trusted name in the world of cleaning. Manufactured by RH & Sons, we are committed to providing high-quality detergent products that remove tough stains and give your clothes a long-lasting freshness, while staying gentle on fabric and safe for every member of the family.',
+
+  mission:
+    'To deliver premium-quality, affordable cleaning products to every household in Pakistan through advanced formulas and honest pricing.',
+
+  vision:
+    'To become Pakistan’s most trusted detergent brand through innovation, quality and customer satisfaction.',
+
+  foundedYear: '2018',
+
+  ceoName: 'Muhammad Rashid',
+
+  ceoDesignation: 'Chief Executive Officer (CEO)',
+
+  ceoImage: '/images/ceo/ceo.jpg',
+
+  ceoMessage:
+    'At RH & Sons, our mission is not only to manufacture detergent but to build trust with every family. Every pack of Khilafat Detergent represents our commitment to quality, innovation and customer satisfaction.',
+
+  coreValues: [
+    'Quality First',
+    'Customer Satisfaction',
+    'Innovation',
+    'Integrity',
+    'Sustainability',
+  ],
+},
   whyChooseUs: [
     { icon: 'flask', title: 'Advance Formula', text: 'Specially designed formula for deep cleaning.' },
     { icon: 'shirt', title: 'Protects Fabric', text: 'Keeps your clothes soft, fresh and new.' },

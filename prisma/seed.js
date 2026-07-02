@@ -85,7 +85,7 @@ async function main() {
 
   // Admin user
   const adminUsername = process.env.ADMIN_USERNAME || 'admin';
-  const adminPassword = process.env.ADMIN_PASSWORD || 'ChangeMe123!';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'rana7890';
   const passwordHash = await bcrypt.hash(adminPassword, 10);
 
   await prisma.adminUser.upsert({

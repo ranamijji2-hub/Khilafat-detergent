@@ -49,7 +49,7 @@ export const DEFAULT_SETTINGS = {
 
   foundedYear: '2018',
 
-  ceoName: 'Muhammad Rashid',
+  ceoName: 'Mudasir Habib',
 
   ceoDesignation: 'Chief Executive Officer (CEO)',
 

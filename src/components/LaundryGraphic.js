@@ -18,7 +18,7 @@ export default function LaundryGraphic() {
 
       <div className="mt-5 text-center">
         <h3 className="text-2xl font-bold text-primary">
-          Muhammad Rashid
+          Mudasir Habib
         </h3>
 
         <p className="text-sm text-gray-600">

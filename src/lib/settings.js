@@ -28,14 +28,14 @@ export const DEFAULT_SETTINGS = {
     fontBody: 'Nunito Sans',
   },
   seo: {
-    titleTemplate: '%s | Khilafat Detergent — RH & Sons',
-    defaultTitle: 'Khilafat Detergent | Premium Detergent Powder in Pakistan — RH & Sons',
-    defaultDescription:
-      'Khilafat Detergent by RH & Sons — advance cleaning power detergent powder available in 50g, 100g, 500g, 1kg and 5kg. Tough on stains, gentle on fabric, eco-friendly. Order online with Cash on Delivery across Pakistan.',
-    keywords:
-      'Khilafat Detergent, RH and Sons, Rhasons, detergent powder Pakistan, washing powder, Muzaffargarh detergent, best detergent powder Pakistan',
-    ogImage: '',
-  },
+  titleTemplate: '%s | Khilafat Detergent — RH & Sons',
+  defaultTitle: 'Khilafat Detergent | Premium Detergent Powder in Pakistan — RH & Sons',
+  defaultDescription: '...',
+  keywords: '...',
+  ogImage: '',
+  googleVerification: 'vP2TpG9tRTbrWoG_hbpkUe_C5EtjhovMVkmfns_SU_g',
+},
+
   about: {
   heading: 'About Khilafat Detergent',
   body:

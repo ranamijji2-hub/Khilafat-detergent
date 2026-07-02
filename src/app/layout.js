@@ -43,9 +43,9 @@ export async function generateMetadata() {
       images: [settings.seo.ogImage || '/images/brand/og-image.jpg'],
     },
     verification: {
-  google: "vP2TpG9tRTbrWoG_hbpkUe_C5EtjhovMVkmfns_SU_g",
+  google: settings.seo.googleVerification,
 },
-
+  
   };
 }
 

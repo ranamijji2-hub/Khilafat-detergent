@@ -1,11 +1,21 @@
 'use client';
-
+import { useState } from 'react';
 import Link from 'next/link';
 import { ShoppingCart, Check, X } from 'lucide-react';
 import { useCart } from './CartContext';
 
 export default function ProductCard({ product }) {
   const { addItem } = useCart();
+  const [added, setAdded] = useState(false);
+  const handleAddToCart = () => {
+  addItem(product, 1);
+
+  setAdded(true);
+
+  setTimeout(() => {
+    setAdded(false);
+  }, 2000);
+};
 
   return (
     <div className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-card transition hover:-translate-y-1 hover:shadow-soft">
@@ -40,10 +50,20 @@ export default function ProductCard({ product }) {
           <span className="font-heading text-xl font-extrabold text-primary">Rs. {product.price}</span>
           <button
             disabled={!product.inStock}
-            onClick={() => addItem(product, 1)}
+            onClick={handleAddToCart}
             className="btn-primary flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-bold disabled:cursor-not-allowed disabled:opacity-40"
           >
-            <ShoppingCart size={16} /> Order Now
+           {added ? (
+  <>
+    <Check size={16} />
+    Added ✓
+  </>
+) : (
+  <>
+    <ShoppingCart size={16} />
+    Add To Cart
+  </>
+)}
           </button>
         </div>
       </div>

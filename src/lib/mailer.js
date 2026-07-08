@@ -4,8 +4,12 @@ function getResend() {
   if (!process.env.RESEND_API_KEY) return null;
   return new Resend(process.env.RESEND_API_KEY);
 }
+const FROM = process.env.RESEND_FROM_EMAIL;
 
-const FROM = process.env.RESEND_FROM_EMAIL || 'Khilafat Detergent <onboarding@resend.dev>';
+if (!FROM) {
+  throw new Error("RESEND_FROM_EMAIL is missing");
+}
+
 const NOTIFY_TO = process.env.ORDER_NOTIFICATION_EMAIL || '';
 
 // ─── Contact Inquiry ─────────────────────────────────────────────────────────

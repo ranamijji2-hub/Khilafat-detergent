@@ -27,6 +27,7 @@
     "nodemailer": "^6.9.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.6.0",
     "resend": "^4.2.0",
     "sharp": "^0.33.5",
     "slugify": "^1.6.6",

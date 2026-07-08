@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react';
+import toast from "react-hot-toast";
 
 const CartContext = createContext(null);
 const STORAGE_KEY = 'khilafat_cart_v1';
@@ -49,6 +50,7 @@ export function CartProvider({ children }) {
         },
       ];
     });
+    toast.success("Added to cart!");
   }, []);
 
   const removeItem = useCallback((productId) => {

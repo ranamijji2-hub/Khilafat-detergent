@@ -1,4 +1,5 @@
 import './globals.css';
+import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from '@clerk/nextjs';
 import { getSettings } from '@/lib/settings';
 import Header from '@/components/Header';
@@ -107,6 +108,7 @@ export default async function RootLayout({ children }) {
             <main>{children}</main>
             <Footer settings={settings} />
             <WhatsAppButton whatsapp={settings.contact.whatsapp} />
+            <Toaster position="top-right" />
           </CartProvider>
         </body>
       </html>

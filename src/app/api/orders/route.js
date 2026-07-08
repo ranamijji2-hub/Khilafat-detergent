@@ -66,10 +66,13 @@ export async function POST(req) {
     });
 
     // Fire-and-forget emails — never block order success on email delivery
-    Promise.all([
-      sendOrderNotificationEmail(order),
-      sendOrderConfirmationToCustomer(order),
-    ]).catch((e) => console.error('[orders] Email error:', e));
+    Promise.allSettled([
+  sendOrderNotificationEmail(order),
+  sendOrderConfirmationToCustomer(order),
+]).then((results) => {
+  console.log("Email Results:", results);
+});
+
 
     return NextResponse.json({ order }, { status: 201 });
   } catch (err) {

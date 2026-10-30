@@ -1,4 +1,4 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rhasons.com.pk').replace(/\/+$/, '');
 
 export default function robots() {
   return {

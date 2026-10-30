@@ -29,9 +29,9 @@ export const DEFAULT_SETTINGS = {
   },
   seo: {
   titleTemplate: '%s | Khilafat Detergent — RH & Sons',
-  defaultTitle: 'Khilafat Detergent | Premium Detergent Powder in Pakistan — RH & Sons',
-  defaultDescription: '...',
-  keywords: '...',
+  defaultTitle: 'Khilafat Detergent | Detergent Powder in Pakistan — RH & Sons',
+  defaultDescription: 'Explore Khilafat Detergent Powder by RH & Sons. View available pack sizes, product details and ordering information on our official website.',
+  keywords: 'Khilafat Detergent, Khilafat Detergent Powder, detergent powder in Pakistan, washing powder in Pakistan, RH & Sons, Rana Habib and Sons',
   ogImage: '',
   googleVerification: 'vP2TpG9tRTbrWoG_hbpkUe_C5EtjhovMVkmfns_SU_g',
 },

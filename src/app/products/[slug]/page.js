@@ -9,7 +9,8 @@ import JsonLd from '@/components/JsonLd';
 
 export const revalidate = 0;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rhasons.com.pk').replace(/\/+$/, '');
+const absoluteUrl = (value) => new URL(value || '/images/brand/og-image.jpg', `${SITE_URL}/`).toString();
 
 async function getProduct(slug) {
   return prisma.product.findUnique({ where: { slug } });
@@ -20,8 +21,7 @@ export async function generateMetadata({ params }) {
   if (!product) return {};
 
   const title = product.metaTitle || `${product.name} ${product.size} | Buy Online`;
-  const description =
-    product.metaDescription || product.description.slice(0, 155);
+  const description = product.metaDescription || (product.description || '').slice(0, 155);
 
   return {
     title,
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title,
       description,
-      images: [{ url: product.image || '/images/brand/og-image.jpg' }],
+      images: [{ url: absoluteUrl(product.image) }],
       type: 'website',
     },
   };
@@ -52,12 +52,12 @@ export default async function ProductDetailPage({ params }) {
     '@type': 'Product',
     name: `${product.name} ${product.size}`,
     description: product.description,
-    image: `${SITE_URL}${product.image || '/images/brand/og-image.jpg'}`,
+    image: absoluteUrl(product.image),
     sku: product.sku || `KD-${product.size}`,
     brand: { '@type': 'Brand', name: 'Khilafat Detergent' },
     offers: {
       '@type': 'Offer',
-      url: `${SITE_URL}/products/${product.slug}`,
+      url: absoluteUrl(`/products/${product.slug}`),
       priceCurrency: 'PKR',
       price: product.price,
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
@@ -69,8 +69,8 @@ export default async function ProductDetailPage({ params }) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE_URL}/products` },
-      { '@type': 'ListItem', position: 3, name: `${product.name} ${product.size}`, item: `${SITE_URL}/products/${product.slug}` },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: absoluteUrl('/products') },
+      { '@type': 'ListItem', position: 3, name: `${product.name} ${product.size}`, item: absoluteUrl(`/products/${product.slug}`) },
     ],
   };
 

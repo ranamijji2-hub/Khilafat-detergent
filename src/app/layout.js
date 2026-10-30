@@ -8,18 +8,24 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import { CartProvider } from '@/components/CartContext';
 import JsonLd from '@/components/JsonLd';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rhasons.com.pk').replace(/\/+$/, '');
+const DEFAULT_TITLE = 'Khilafat Detergent | Detergent Powder in Pakistan — RH & Sons';
+const DEFAULT_DESCRIPTION = 'Explore Khilafat Detergent Powder by RH & Sons. View available pack sizes, product details and ordering information on our official website.';
+const DEFAULT_KEYWORDS = 'Khilafat Detergent, Khilafat Detergent Powder, detergent powder in Pakistan, washing powder in Pakistan, RH & Sons, Rana Habib and Sons';
 
 export async function generateMetadata() {
   const settings = await getSettings();
+  const seo = settings.seo || {};
+  const title = seo.defaultTitle?.trim() && seo.defaultTitle.trim() !== '...' ? seo.defaultTitle : DEFAULT_TITLE;
+  const description = seo.defaultDescription?.trim() && seo.defaultDescription.trim() !== '...' ? seo.defaultDescription : DEFAULT_DESCRIPTION;
+  const keywords = seo.keywords?.trim() && seo.keywords.trim() !== '...' ? seo.keywords : DEFAULT_KEYWORDS;
+  const titleTemplate = seo.titleTemplate?.trim() || '%s | Khilafat Detergent — RH & Sons';
+
   return {
     metadataBase: new URL(SITE_URL),
-    title: {
-      default: settings.seo.defaultTitle,
-      template: settings.seo.titleTemplate,
-    },
-    description: settings.seo.defaultDescription,
-    keywords: settings.seo.keywords,
+    title: { default: title, template: titleTemplate },
+    description,
+    keywords,
     alternates: { canonical: '/' },
     applicationName: settings.siteName,
     authors: [{ name: settings.companyName }],
@@ -32,21 +38,18 @@ export async function generateMetadata() {
       type: 'website',
       url: SITE_URL,
       siteName: settings.siteName,
-      title: settings.seo.defaultTitle,
-      description: settings.seo.defaultDescription,
-      images: [{ url: settings.seo.ogImage || '/images/brand/og-image.jpg', width: 1200, height: 630 }],
+      title,
+      description,
+      images: [{ url: seo.ogImage || '/images/brand/og-image.jpg', width: 1200, height: 630 }],
       locale: 'en_PK',
     },
     twitter: {
       card: 'summary_large_image',
-      title: settings.seo.defaultTitle,
-      description: settings.seo.defaultDescription,
-      images: [settings.seo.ogImage || '/images/brand/og-image.jpg'],
+      title,
+      description,
+      images: [seo.ogImage || '/images/brand/og-image.jpg'],
     },
-    verification: {
-  google: settings.seo.googleVerification,
-},
-  
+    verification: { google: seo.googleVerification },
   };
 }
 
